@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify, g
 import time
+from app import app
 
-app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def home():
@@ -35,6 +35,6 @@ def after_request(response):
     g.request_time = diff
     return response
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5000")
+#if __name__ == '__main__':
+#    app.run(host="0.0.0.0", port="5000", debug=True)
 
