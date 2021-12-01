@@ -1,5 +1,5 @@
 import unittest
-from flask import globals, g
+from flask import g
 from app import app
 import json
 
