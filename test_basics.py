@@ -28,18 +28,18 @@ class TestApp(unittest.TestCase):
 
     def test_form_user(self):
         response = self.client.get('/handle', data={
+            'seq': ';',
+        }, follow_redirects=True)
+        error = {"mean": "error parsing in floats."}
+        assert json.dumps(error)
+        
+        response = self.client.get('/handle', data={
             'seq': '3;4;7',
         }, follow_redirects=True)
         self.assertEqual(response.status_code, 400)
 
         mean = {"mean": 4.67}
         assert json.dumps(mean)
-
-        response = self.client.get('/handle', data={
-            'seq': ';',
-        }, follow_redirects=True)
-        error = {"mean": "error parsing in floats."}
-        assert json.dumps(error)
 
     def test_request_time(self):
         self.test_form_user()
